@@ -112,6 +112,7 @@
             if (drawPoint === null) {
                 clearInterval(interval);
                 endCallback();
+                return;
             }
 
             setPixel(drawPoint, c, b);
@@ -165,7 +166,7 @@
     }
 
     function getWhiteRequestStruct() {
-        let startPoint = new Point(433, 116);
+        let startPoint = new Point(433, 117);
         let endPoint = new Point(506, 138);
 
         return new RequestStruct(startPoint, endPoint, COLORS.WHITE, B_PARAM);
