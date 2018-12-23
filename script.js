@@ -9,9 +9,9 @@
 
     const B_PARAM = 3108;
 
-    const REQUEST_DELAY_MS = 200;
+    const REQUEST_DELAY_MS = 150;
 
-    const REQ_OBJECTS_COUNT = 20;
+    const REQ_OBJECTS_COUNT = 30;
 
     const REQ_POOL = new ReqPool(REQ_OBJECTS_COUNT);
 
@@ -102,27 +102,6 @@
         };
     }
 
-    function getWhiteRequestStruct() {
-        let startPoint = new Point(433, 116);
-        let endPoint = new Point(506, 138);
-
-        return new RequestStruct(startPoint, endPoint, COLORS.WHITE, B_PARAM);
-    }
-
-    function getBlueRequestStruct() {
-        let startPoint = new Point(433, 140);
-        let endPoint = new Point(506, 161);
-
-        return new RequestStruct(startPoint, endPoint, COLORS.BLUE, B_PARAM);
-    }
-
-    function getRedRequestStruct() {
-        let startPoint = new Point(433, 165);
-        let endPoint = new Point(506, 189);
-
-        return new RequestStruct(startPoint, endPoint, COLORS.RED, B_PARAM);
-    }
-
     function setPixelsByRequestStruct(eachPixelCallback, endCallback, requestStruct, drawingDelay = 500) {
         let nextPointFunction = getNextPointFunction(requestStruct.getStartPoint(), requestStruct.getEndPoint());
         let c = requestStruct.getC();
@@ -183,6 +162,27 @@
             req.send(params);
             REQ_POOL.freeReq(req);
         });
+    }
+
+    function getWhiteRequestStruct() {
+        let startPoint = new Point(433, 116);
+        let endPoint = new Point(506, 138);
+
+        return new RequestStruct(startPoint, endPoint, COLORS.WHITE, B_PARAM);
+    }
+
+    function getBlueRequestStruct() {
+        let startPoint = new Point(433, 139);
+        let endPoint = new Point(506, 161);
+
+        return new RequestStruct(startPoint, endPoint, COLORS.BLUE, B_PARAM);
+    }
+
+    function getRedRequestStruct() {
+        let startPoint = new Point(433, 162);
+        let endPoint = new Point(506, 184);
+
+        return new RequestStruct(startPoint, endPoint, COLORS.RED, B_PARAM);
     }
 
     function pointDrewHandler(point) {
